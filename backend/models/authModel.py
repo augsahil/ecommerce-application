@@ -8,12 +8,18 @@ class RolesEnum(str, Enum):
     buyer = "buyer"
 
 class User(BaseModel):
-    name: str = Field(..., min_length=3, max_length=50)
+    name: str = Field(...)
     email: EmailStr = Field(..., min_length=6, max_length=100)
     password: str = Field(..., min_length=6, max_length=100)
     role: Optional[RolesEnum] = Field(default=RolesEnum.buyer)
     create_at: datetime = Field(default_factory=lambda : datetime.now(timezone.utc))
     update_at: datetime = Field(default_factory=lambda : datetime.now(timezone.utc), set_column_kwargs={"onupdate": datetime.now(timezone.utc)})
     
-    # @field_validator('name')
-    # def validate_name(cls, v):
+    @field_validator('name')
+    def validate_name(cls, value):
+        if len(value) < 3 or len(value) > 50:
+            raise ValueError('Name must be between 3 and 50 characters long')
+        return value
+    
+class RegisterUser(User):
+    pass
