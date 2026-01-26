@@ -1,16 +1,16 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
-import HomePage from "./pages/HomePage";
-import Headers from "./components/Header";
-import LoginUser from "./pages/auth/LoginUser";
+import LoginUser from "@/pages/auth/LoginUser";
+import MainLayout from "@/layout/MainLayout";
+import HomePage from "@/pages/HomePage";
 
 const App = () => {
   return (
     <>
-      <Headers />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/login" element={<LoginUser />} />
+        <Route path="/" Component={MainLayout}>
+          <Route index Component={HomePage} />
+        </Route>
+        <Route path="/login" Component={LoginUser} />
       </Routes>
     </>
   );

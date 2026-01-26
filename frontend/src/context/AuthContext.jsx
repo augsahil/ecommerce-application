@@ -1,6 +1,6 @@
 import React, { createContext, useContext } from "react";
 import { useSelector } from "react-redux";
-import { UserSlicePath } from "../redux/slice/user.slice";
+import { UserSlicePath } from "@/redux/slice/user.slice";
 
 const AuthContext = createContext();
 
