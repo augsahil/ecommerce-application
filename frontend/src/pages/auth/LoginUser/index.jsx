@@ -9,16 +9,42 @@ const LoginUser = () => {
             <Logo className={"mx-auto"} />
           </div>
           <div className="md-3 flex flex-col gap-2">
-            <label htmlFor="name">Name <span className="text-red-500">*</span></label>
-            <input id="name" type="text" className="w-full p-2 rounded outline-none bg-gray-50 border border-gray-200" placeholder="Enter yYour Name"/>
+            <label htmlFor="name">
+              Name <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="name"
+              type="text"
+              className="w-full p-2 rounded outline-none bg-gray-50 border border-gray-200"
+              placeholder="Enter yYour Name"
+            />
           </div>
           <div className="md-3 flex flex-col gap-2">
-            <label htmlFor="email">Email <span className="text-red-500">*</span></label>
-            <input id="email" type="email" className="w-full p-2 rounded outline-none bg-gray-50 border border-gray-200" placeholder="Enter Your Email"/>
+            <label htmlFor="email">
+              Email <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="email"
+              type="email"
+              className="w-full p-2 rounded outline-none bg-gray-50 border border-gray-200"
+              placeholder="Enter Your Email"
+            />
           </div>
           <div className="md-3 flex flex-col gap-2">
-            <label htmlFor="password">Password <span className="text-red-500">*</span></label>
-            <input id="password" type="password" className="w-full p-2 rounded outline-none bg-gray-50 border border-gray-200" placeholder="Enter Your Password"/>
+            <label htmlFor="password">
+              Password <span className="text-red-500">*</span>
+            </label>
+            <input
+              id="password"
+              type="password"
+              className="w-full p-2 rounded outline-none bg-gray-50 border border-gray-200"
+              placeholder="Enter Your Password"
+            />
+          </div>
+          <div className="mt-4">
+            <button className="w-full bg-rose-700 text-white py-2 rounded hover:bg-rose-800 transition duration-300">
+              Login
+            </button>
           </div>
         </div>
       </div>
