@@ -1,6 +1,19 @@
+import { useState } from "react";
+
+import AuthButton from "@/components/ui/AuthButton";
 import Logo from "@/components/ui/Logo";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const LoginUser = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isHide, setIsHide] = useState(true);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log("Login clicked");
+    setIsLoading(true);
+  };
+
   return (
     <>
       <div className="min-h-[90vh] flex items-center justify-center">
@@ -34,17 +47,28 @@ const LoginUser = () => {
             <label htmlFor="password">
               Password <span className="text-red-500">*</span>
             </label>
-            <input
-              id="password"
-              type="password"
-              className="w-full p-2 rounded outline-none bg-gray-50 border border-gray-200"
-              placeholder="Enter Your Password"
-            />
+            <div className="w-full p-2 rounded outline-none bg-gray-50 border border-gray-200 flex items-center gap-2">
+              <input
+                id="password"
+                type="password"
+                className="w-full outline-none bg-gray-50"
+                placeholder="Enter Your Password"
+              />
+              <button
+                onClick={() => setIsHide(!isHide)}
+                type="button"
+                className="text-xl"
+              >
+                {isHide ? <FaEye /> : <FaEyeSlash />}
+              </button>
+            </div>
           </div>
           <div className="mt-4">
-            <button className="w-full bg-rose-700 text-white py-2 rounded hover:bg-rose-800 transition duration-300">
-              Login
-            </button>
+            <AuthButton
+              text={"Login"}
+              isLoading={isLoading}
+              onClick={(e) => handleClick(e)}
+            />
           </div>
         </div>
       </div>
