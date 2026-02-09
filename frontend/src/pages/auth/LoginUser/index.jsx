@@ -16,7 +16,7 @@ const LoginUser = () => {
 
   return (
     <>
-      <div className="min-h-[90vh] flex items-center justify-center">
+      <div className="min-h-screen flex items-center justify-center">
         <div className="w-[96%] mx-auto lg:w-1/2 xl:w-1/3 p-4 lg:px-10 rounded border border-gray-100 shadow flex flex-col gap-4">
           <div className="md-3 w-full flex justify-center">
             <Logo className={"mx-auto"} />
@@ -70,6 +70,14 @@ const LoginUser = () => {
               onClick={(e) => handleClick(e)}
             />
           </div>
+          <div className="mb-3 flex justify-center items-center">
+            <div className="w-full border-t border-gray-200"></div>
+            <div className="mx-2 text-gray-500">OR</div>
+            <div className="w-full border-t border-gray-200"></div>
+          </div>
+          <div className="mb-3 flex justify-center items-center">
+            <p className="text-center text-gray-600">Don't have an account? <a href="/auth/register" className="text-blue-500 hover:underline">Register</a></p>
+            </div>
         </div>
       </div>
     </>
