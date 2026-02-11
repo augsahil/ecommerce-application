@@ -8,6 +8,7 @@ import { ROLE_TYPE } from "@/constant/auth.constant";
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
+import { axiosClient } from "@/utils/axiosClient";
 
 const LoginUser = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -29,16 +30,19 @@ const LoginUser = () => {
       .oneOf(Object.values(ROLE_TYPE), "Invalid role"),
   });
 
-  const onSubmitHandler = (values, helpers) => {
+  const onSubmitHandler = async (values, helpers) => {
     console.log(values);
+    const response = await axiosClient.post("/auth/register", values);
+    const data = response.data;
+    console.log("Response data: ", data);
     helpers.resetForm();
+  };
 
-    const initialValues = {
-      name: "",
-      email: "",
-      password: "",
-      role: ROLE_TYPE.BUYER,
-    };
+  const initialValues = {
+    name: "",
+    email: "",
+    password: "",
+    role: ROLE_TYPE.BUYER,
   };
 
   return (
@@ -46,15 +50,10 @@ const LoginUser = () => {
       <Formik
         validationSchema={vaidationSchema}
         onSubmit={onSubmitHandler}
-        initialValues={{
-          name: "",
-          email: "",
-          password: "",
-          role: ROLE_TYPE.BUYER,
-        }}
+        initialValues={initialValues}
       >
         <Form className="min-h-screen flex items-center justify-center">
-          <div className="w-[96%] mx-auto lg:w-1/2 xl:w-1/3 p-4 lg:px-10 rounded border border-gray-100 shadow flex flex-col gap-4">
+          <div className="w-[96%] mx-auto lg:w-1/2 xl:w-1/3 p-4 lg:px-10 rounded border border-gray-100 shadow flex flex-col gap-4 bg-black/10">
             <div className="md-3 w-full flex justify-center">
               <Logo className={"mx-auto"} />
             </div>
@@ -96,7 +95,8 @@ const LoginUser = () => {
               <label htmlFor="role">
                 role <span className="text-red-500">*</span>
               </label>
-              <Field as="select"
+              <Field
+                as="select"
                 id="role"
                 name="role"
                 className="w-full p-2 rounded outline-none bg-gray-50 border border-gray-200"
