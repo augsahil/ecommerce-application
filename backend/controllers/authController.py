@@ -1,4 +1,4 @@
 from services.authService import registerService
 
-def registerController(data):
-    return registerService(data)
+async def registerController(data):
+    return await registerService(data)

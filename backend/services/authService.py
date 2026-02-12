@@ -1,7 +1,6 @@
 from config.db import users_collection
 
-def registerService(data):
-    doc = users_collection.insert_one(data.dict())
-    print("Inserted document id:", doc)
+async def registerService(data):
+    await users_collection.insert_one(data.dict())
     
-    return data
+    return {"message": "User registered successfully"}

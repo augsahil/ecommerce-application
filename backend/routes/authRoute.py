@@ -10,6 +10,4 @@ router = APIRouter(prefix="/api/v1/auth", tags=["Authentication"])
 #register route
 @router.post("/register")
 async def registerView(data: UserModel):
-    # doc = await users_collection.insert_one(data.dict())
-    # print("Inserted document id:", doc)
-    return registerController(data)
+    return await registerController(data)
