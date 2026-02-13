@@ -75,23 +75,6 @@ const LoginUser = () => {
               />
             </div>
             <div className="md-3 flex flex-col gap-2">
-              <label htmlFor="email">
-                Email <span className="text-red-500">*</span>
-              </label>
-              <Field
-                id="email"
-                name="email"
-                type="email"
-                className="w-full p-2 rounded outline-none bg-gray-50 border border-gray-200"
-                placeholder="Enter Your Email"
-              />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className="text-red-500 text-sm mt-1"
-              />
-            </div>
-            <div className="md-3 flex flex-col gap-2">
               <label htmlFor="role">
                 role <span className="text-red-500">*</span>
               </label>
@@ -108,6 +91,23 @@ const LoginUser = () => {
               </Field>
               <ErrorMessage
                 name="role"
+                component="div"
+                className="text-red-500 text-sm mt-1"
+              />
+            </div>
+            <div className="md-3 flex flex-col gap-2">
+              <label htmlFor="email">
+                Email <span className="text-red-500">*</span>
+              </label>
+              <Field
+                id="email"
+                name="email"
+                type="email"
+                className="w-full p-2 rounded outline-none bg-gray-50 border border-gray-200"
+                placeholder="Enter Your Email"
+              />
+              <ErrorMessage
+                name="email"
                 component="div"
                 className="text-red-500 text-sm mt-1"
               />
@@ -132,6 +132,11 @@ const LoginUser = () => {
                   {isHide ? <FaEye /> : <FaEyeSlash />}
                 </button>
               </div>
+              <ErrorMessage
+                name="password"
+                component="div"
+                className="text-red-500 text-sm mt-1"
+              />
             </div>
             <div className="mt-4">
               <AuthButton
