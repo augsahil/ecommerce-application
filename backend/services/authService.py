@@ -1,5 +1,5 @@
 from config.db import users_collection
-from models.authModel import RegisterUser
+from models.authModel import LoginUser, RegisterUser
 from fastapi import HTTPException
 import bcrypt
 
@@ -21,4 +21,21 @@ async def registerService(data: RegisterUser):
     return {
         "message": "User registered successfully",
         "token": ""   
+    }
+
+async def loginService(data: LoginUser):
+    user = await users_collection.find_one({"email": data.email.lower()})
+    
+    if not user:
+        raise HTTPException(status_code=400, detail="Invalid email or password")
+
+    if not bcrypt.checkpw(data.password.encode(), user['password'].encode()):
+        raise HTTPException(status_code=400, detail="Invalid email or password")
+
+    # Generate token here (e.g., JWT)
+    token = ""
+
+    return {
+        "message": "Login successful",
+        "token": token
     }

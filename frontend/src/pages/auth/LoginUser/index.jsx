@@ -9,6 +9,8 @@ import { ROLE_TYPE } from "@/constant/auth.constant";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { axiosClient } from "@/utils/axiosClient";
+import { setLoading } from "@/redux/slice/user.slice";
+import { toast } from "react-toastify";
 
 const LoginUser = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -26,13 +28,30 @@ const LoginUser = () => {
       .min(6, "Password must be at least 6 characters"),
   });
 
+  // const onSubmitHandler = async (values, helpers) => {
+  //   console.log(values);
+  //   const response = await axiosClient.post("/auth/login", values);
+  //   const data = response.data;
+  //   console.log("Response data: ", data);
+  //   helpers.resetForm();
+  // };
   const onSubmitHandler = async (values, helpers) => {
-    console.log(values);
-    const response = await axiosClient.post("/auth/register", values);
-    const data = response.data;
-    console.log("Response data: ", data);
-    helpers.resetForm();
-  };
+      try {
+        setLoading(true);
+        console.log(values);
+        const response = await axiosClient.post("/auth/login", values);
+        const data = response.data;
+        // console.log("Response data: ", data);
+        toast.success(data.message || "Login successful");
+        helpers.resetForm();
+      } catch (e) {
+        // console.log("exception catch is: ", e);
+        toast.error(e.response?.data?.detail || e.message || "Login failed");
+      }
+      finally{
+        setIsLoading(false)
+      }
+    };
 
   const initialValues = {
     email: "",

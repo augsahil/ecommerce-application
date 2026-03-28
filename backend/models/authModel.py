@@ -23,3 +23,7 @@ class User(BaseModel):
     
 class RegisterUser(User):
     pass
+
+class LoginUser(BaseModel):
+    email: EmailStr = Field(..., min_length=6, max_length=100)
+    password: str = Field(..., min_length=6, max_length=100)

@@ -10,6 +10,7 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { axiosClient } from "@/utils/axiosClient";
 import { setLoading } from "@/redux/slice/user.slice";
+import { toast } from "react-toastify";
 
 const RegisterUser = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -32,11 +33,12 @@ const RegisterUser = () => {
       console.log(values);
       const response = await axiosClient.post("/auth/register", values);
       const data = response.data;
-      console.log("Response data: ", data);
+      // console.log("Response data: ", data);
+      toast.success(data.message || "Registration successful");
       helpers.resetForm();
     } catch (e) {
-      console.log("exception catch is: ", e);
-      
+      // console.log("exception catch is: ", e);
+      toast.error(e.response?.data?.detail || e.message || "Registration failed");
     }
     finally{
       setIsLoading(false)
