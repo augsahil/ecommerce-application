@@ -2,6 +2,9 @@ from config.db import users_collection
 from models.authModel import LoginUser, RegisterUser
 from fastapi import HTTPException
 import bcrypt
+import jwt
+from datetime import datetime, timedelta
+from config.Env import ENVConfig
 
 async def registerService(data: RegisterUser):
     check_exist = await users_collection.find_one({"email": data.email.lower()})
@@ -33,7 +36,12 @@ async def loginService(data: LoginUser):
         raise HTTPException(status_code=400, detail="Invalid email or password")
 
     # Generate token here (e.g., JWT)
-    token = ""
+    token = jwt.encode({
+        "user_id": str(user["_id"]),
+        "exp": datetime.utcnow() + timedelta(days=10)
+        }, 
+        ENVConfig.JWT_AUTH_SECRET,
+        algorithm="HS256")
 
     return {
         "message": "Login successful",
