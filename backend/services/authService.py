@@ -1,12 +1,13 @@
 from config.db import users_collection
-from models.authModel import LoginUser, RegisterUser
+from models import authModel
 from fastapi import HTTPException
 import bcrypt
 import jwt
 from datetime import datetime, timedelta
 from config.Env import ENVConfig
+import bson
 
-async def registerService(data: RegisterUser):
+async def registerService(data: authModel.RegisterUser):
     check_exist = await users_collection.find_one({"email": data.email.lower()})
 
     if check_exist:
@@ -31,7 +32,7 @@ async def registerService(data: RegisterUser):
         "token": token   
     }
 
-async def loginService(data: LoginUser):
+async def loginService(data: authModel.LoginUser):
     user = await users_collection.find_one({"email": data.email.lower()})
     
     if not user:
@@ -52,3 +53,13 @@ async def loginService(data: LoginUser):
         "message": "Login successful",
         "token": token
     }
+
+async def profileService(userId: str):
+    user = await users_collection.find_one({"_id": bson.ObjectId(userId)})
+
+    if not user:
+        raise HTTPException(status_code=404, detail="User details not found")
+
+    del(user["password"])
+    user['_id'] = str(user['_id'])
+    return user

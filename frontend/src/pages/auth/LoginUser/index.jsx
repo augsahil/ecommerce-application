@@ -16,11 +16,6 @@ const LoginUser = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isHide, setIsHide] = useState(true);
 
-  // const handleClick = (e) => {
-  //   e.preventDefault();
-  //   console.log("Login clicked");
-  //   setIsLoading(true);
-  // };
   const vaidationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
     password: Yup.string()
@@ -28,13 +23,6 @@ const LoginUser = () => {
       .min(6, "Password must be at least 6 characters"),
   });
 
-  // const onSubmitHandler = async (values, helpers) => {
-  //   console.log(values);
-  //   const response = await axiosClient.post("/auth/login", values);
-  //   const data = response.data;
-  //   console.log("Response data: ", data);
-  //   helpers.resetForm();
-  // };
   const onSubmitHandler = async (values, helpers) => {
       try {
         setLoading(true);
@@ -43,6 +31,7 @@ const LoginUser = () => {
         const data = response.data;
         // console.log("Response data: ", data);
         toast.success(data.message || "Login successful");
+        localStorage.setItem("token", data.token)
         helpers.resetForm();
       } catch (e) {
         // console.log("exception catch is: ", e);

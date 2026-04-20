@@ -1,18 +1,25 @@
 from fastapi import HTTPException
 
-from services.authService import loginService, registerService
-from models.authModel import RegisterUser
+from services import authService
+from models import authModel
 
-async def registerController(data: RegisterUser):
+async def registerController(data: authModel.RegisterUser):
     try:
-        res_obj = await registerService(data)
+        res_obj = await authService.registerService(data)
         return res_obj
     except Exception as e:
         raise HTTPException(status_code=400, detail=str(e))
 
-async def loginController(data):
+async def loginController(data: authModel.LoginUser):
     try:
-        res_obj = await loginService(data)
+        res_obj = await authService.loginService(data)
         return res_obj
     except Exception as e:
+        raise HTTPException(status_code=400, detail=str(e))
+
+async def profileController(userId: str):
+    try:
+        res_obj = await authService.profileService(userId)
+        return res_obj
+    except Exception as e:       
         raise HTTPException(status_code=400, detail=str(e))
