@@ -17,13 +17,18 @@ async def registerService(data: RegisterUser):
     user_data = data.dict()
     user_data['password'] = hash_string
 
-    #token
-
-    await users_collection.insert_one(user_data)
+    doc = await users_collection.insert_one(user_data)
     
+    #token
+    token = jwt.encode({
+        "user_id":str(doc.inserted_id),
+        "exp": datetime.utcnow()+timedelta(days=10),
+        "iat": datetime.utcnow()
+    }, ENVConfig.JWT_AUTH_SECRET, algorithm='HS256')
+
     return {
         "message": "User registered successfully",
-        "token": ""   
+        "token": token   
     }
 
 async def loginService(data: LoginUser):
