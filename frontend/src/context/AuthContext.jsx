@@ -1,8 +1,9 @@
 import React, { createContext, useContext, useEffect, useRef } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { UserSlicePath } from "@/redux/slice/user.slice";
 import { axiosClient } from "@/utils/axiosClient";
 import { toast } from "react-toastify";
+import { setUser } from "@/redux/slice/user.slice";
 
 const AuthContext = createContext();
 
