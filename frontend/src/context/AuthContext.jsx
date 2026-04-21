@@ -11,6 +11,7 @@ export const useAuthContext = () => useContext(AuthContext);
 export const AuthContextProvider = ({ children }) => {
   const user = useSelector(UserSlicePath);
   const hasRunRef = useRef(false);
+  const dispatch = useDispatch();
 
   const fetchUserProfile = async () => {
     try {
@@ -24,7 +25,8 @@ export const AuthContextProvider = ({ children }) => {
         },
       });
       const data = await response.data;
-      console.log("User profile fetched:", data);
+      // console.log("User profile fetched:", data);
+      dispatch(setUser(data));
     } catch (error) {
       toast.error(error.response?.data?.detail || error.message);
     }
