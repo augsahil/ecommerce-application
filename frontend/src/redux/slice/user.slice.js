@@ -16,11 +16,14 @@ export const userSlice = createSlice({
         },
         setError: (state, action) => {
             state.error = action.payload;
+        },
+        removeUser: (state) => {
+            state.user = null;
         }
     }
 });
 
-export const { setUser, setLoading, setError } = userSlice.actions;
+export const { setUser, setLoading, setError, removeUser } = userSlice.actions;
 
 export const UserSlicePath = (store) => store.userSlice.user;
 

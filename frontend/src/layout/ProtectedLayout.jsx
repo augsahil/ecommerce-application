@@ -4,16 +4,16 @@ import { UserSlicePath } from "@/redux/slice/user.slice";
 import { useNavigate, Outlet } from 'react-router-dom';
 import LoaderComponent from '@/components/ui/LoaderComponent';
 
-const AuthLayout = () => {
+const ProtectedLayout = () => {
     const user = useSelector(UserSlicePath);
     const [loading, setLoading] = React.useState(true);
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (user) {
+        if (!user) {
             // console.log("user is: ", user);
             
-            navigate("/dashboard");
+            navigate("/login");
         } else {
             // console.log("user not found, staying on auth page");
             setLoading(false);
@@ -35,4 +35,4 @@ const AuthLayout = () => {
     );
 };
 
-export default AuthLayout;
+export default ProtectedLayout;

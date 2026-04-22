@@ -11,10 +11,12 @@ import * as Yup from "yup";
 import { axiosClient } from "@/utils/axiosClient";
 import { setLoading } from "@/redux/slice/user.slice";
 import { toast } from "react-toastify";
+import { useAuthContext } from "@/context/AuthContext";
 
 const LoginUser = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isHide, setIsHide] = useState(true);
+  const { fetchUserProfile } = useAuthContext();
 
   const vaidationSchema = Yup.object().shape({
     email: Yup.string().email("Invalid email").required("Email is required"),
@@ -32,6 +34,7 @@ const LoginUser = () => {
         // console.log("Response data: ", data);
         toast.success(data.message || "Login successful");
         localStorage.setItem("token", data.token)
+        await fetchUserProfile();
         helpers.resetForm();
       } catch (e) {
         // console.log("exception catch is: ", e);

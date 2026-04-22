@@ -1,9 +1,10 @@
 import React, { createContext, useContext, useEffect, useRef } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { UserSlicePath } from "@/redux/slice/user.slice";
+import { removeUser, UserSlicePath } from "@/redux/slice/user.slice";
 import { axiosClient } from "@/utils/axiosClient";
 import { toast } from "react-toastify";
 import { setUser } from "@/redux/slice/user.slice";
+import { useNavigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -13,6 +14,7 @@ export const AuthContextProvider = ({ children }) => {
   const user = useSelector(UserSlicePath);
   const hasRunRef = useRef(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const fetchUserProfile = async () => {
     try {
@@ -34,16 +36,21 @@ export const AuthContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    // console.log("fetching user profile");
-    // fetchUserProfile();
     if (!hasRunRef.current) {
       console.log("fetching user profile");
       fetchUserProfile();
       hasRunRef.current = true;
     }
   }, []);
+  
+  const logoutUser = () => {
+    localStorage.removeItem("token");
+    dispatch(removeUser());
+    toast.success("Logged out successfully");
+    navigate("/");
+  };
 
   return (
-    <AuthContext.Provider value={{ user }}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={{ user, logoutUser, fetchUserProfile }}>{children}</AuthContext.Provider>
   );
 };
