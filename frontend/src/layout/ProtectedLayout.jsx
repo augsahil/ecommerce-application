@@ -1,16 +1,16 @@
-import LoaderComponent from "@/components/ui/LoaderComponent";
-import { UserSlicePath } from "@/redux/slice/user.slice";
-import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { Link, Outlet, useNavigate } from "react-router-dom";
-import { Sidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import { setToggle, SidebarSlicePath } from "@/redux/slice/sidebar.slice";
-import { CiShoppingCart, CiUser } from "react-icons/ci";
-import { IoMdHeartEmpty } from "react-icons/io";
-import { IoBagCheckOutline } from "react-icons/io5";
+import LoaderComponent from '@/components/ui/LoaderComponent';
+import { UserSlicePath } from '@/redux/slice/user.slice';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, Outlet, useNavigate } from 'react-router-dom';
+import { Sidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar';
+import { setToggle, SidebarSlicePath } from '@/redux/slice/sidebar.slice';
+import { CiShoppingCart, CiUser } from 'react-icons/ci';
+import { IoMdHeartEmpty } from 'react-icons/io';
+import { IoBagCheckOutline } from 'react-icons/io5';
 
-import { MdDashboard, MdProductionQuantityLimits } from "react-icons/md";
-import { ROLE_TYPE } from "@/constant/auth.constant";
+import { MdDashboard, MdProductionQuantityLimits } from 'react-icons/md';
+import { ROLE_TYPE } from '@/constant/auth.constant';
 
 const ProtectedLayout = () => {
   const user = useSelector(UserSlicePath);
@@ -21,7 +21,7 @@ const ProtectedLayout = () => {
   const { isToggle, isCollapse } = useSelector(SidebarSlicePath);
   useEffect(() => {
     if (!user) {
-      navigate("/login");
+      navigate('/login');
     } else {
       setLoading(false);
     }
@@ -51,8 +51,8 @@ const ProtectedLayout = () => {
                 // the active class will be added automatically by react router
                 // so we can use it to style the active menu item
                 [`&.active`]: {
-                  backgroundColor: "#13395e",
-                  color: "#b6c8d9",
+                  backgroundColor: '#13395e',
+                  color: '#b6c8d9',
                 },
               },
             }}
@@ -61,7 +61,7 @@ const ProtectedLayout = () => {
               icon={<MdDashboard className="text-2xl" />}
               component={<Link to="/dashboard" />}
             >
-              {" "}
+              {' '}
               Dashboard
             </MenuItem>
 
@@ -72,21 +72,21 @@ const ProtectedLayout = () => {
                   icon={<IoMdHeartEmpty className="text-2xl" />}
                   component={<Link to="/wishlist" />}
                 >
-                  {" "}
+                  {' '}
                   WishList
                 </MenuItem>
                 <MenuItem
                   icon={<IoBagCheckOutline className="text-2xl" />}
                   component={<Link to="/checkout" />}
                 >
-                  {" "}
+                  {' '}
                   Checkout
                 </MenuItem>
                 <MenuItem
                   icon={<CiShoppingCart className="text-2xl" />}
                   component={<Link to="/orders" />}
                 >
-                  {" "}
+                  {' '}
                   Orders
                 </MenuItem>
               </>
@@ -98,11 +98,11 @@ const ProtectedLayout = () => {
                   icon={<MdProductionQuantityLimits className="text-2xl" />}
                 >
                   <MenuItem component={<Link to="/AddProduct" />}>
-                    {" "}
+                    {' '}
                     Add Product
                   </MenuItem>
                   <MenuItem component={<Link to="/AllProduct" />}>
-                    {" "}
+                    {' '}
                     All Product
                   </MenuItem>
                 </SubMenu>
@@ -113,7 +113,7 @@ const ProtectedLayout = () => {
               icon={<CiUser className="text-2xl" />}
               component={<Link to="/profile" />}
             >
-              {" "}
+              {' '}
               Profile
             </MenuItem>
           </Menu>

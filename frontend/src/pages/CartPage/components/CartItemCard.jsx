@@ -1,13 +1,13 @@
-import { CART_OPERATIONS } from "@/constant/cart.constant";
-import { axiosClient } from "@/utils/axiosClient";
-import React, { useState } from "react";
-import { FaMinus, FaPlus } from "react-icons/fa";
-import { toast } from "react-toastify";
+import { CART_OPERATIONS } from '@/constant/cart.constant';
+import { axiosClient } from '@/utils/axiosClient';
+import React, { useState } from 'react';
+import { FaMinus, FaPlus } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const CartItemCard = ({ data, fetchAllProducts }) => {
   const [loading, setLoading] = useState(false);
 
-  const cartOperation = async (operation = "") => {
+  const cartOperation = async (operation = '') => {
     try {
       setLoading(true);
 
@@ -16,7 +16,7 @@ const CartItemCard = ({ data, fetchAllProducts }) => {
         {},
         {
           headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
+            Authorization: 'Bearer ' + localStorage.getItem('token'),
           },
         },
       );

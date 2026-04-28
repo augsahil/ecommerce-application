@@ -1,9 +1,9 @@
-import LoaderComponent from "@/components/ui/LoaderComponent";
-import { axiosClient } from "@/utils/axiosClient";
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import EmptyImage from "@/assets/empty.png";
-import { Link } from "react-router-dom";
+import LoaderComponent from '@/components/ui/LoaderComponent';
+import { axiosClient } from '@/utils/axiosClient';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import EmptyImage from '@/assets/empty.png';
+import { Link } from 'react-router-dom';
 const HomePage = () => {
   const [loading, setLoading] = useState(true);
   const [products, setProducts] = useState([]);
@@ -12,7 +12,7 @@ const HomePage = () => {
     try {
       setLoading(true);
 
-      const response = await axiosClient.get("/products");
+      const response = await axiosClient.get('/products');
       const data = await response.data;
       setProducts(data);
     } catch (error) {
@@ -68,7 +68,7 @@ const Card = ({ data }) => {
   return (
     <>
       <Link
-        to={"/product/" + data.slug}
+        to={'/product/' + data.slug}
         className="  w-full bg-gray-50 border border-gray-200"
       >
         <a className="block relative h-48 rounded overflow-hidden">

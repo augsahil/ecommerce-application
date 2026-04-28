@@ -1,6 +1,6 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { UserSlice } from "./slice/user.slice";
-import { SidebarSlice } from "./slice/sidebar.slice";
+import { configureStore } from '@reduxjs/toolkit';
+import { UserSlice } from './slice/user.slice';
+import { SidebarSlice } from './slice/sidebar.slice';
 
 export const store = configureStore({
   reducer: {

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
-import CartItemCard from "./components/CartItemCard";
-import LoaderComponent from "@/components/ui/LoaderComponent";
-import { toast } from "react-toastify";
-import { axiosClient } from "@/utils/axiosClient";
-import { useAuthContext } from "@/context/AuthContext";
-import CartEmpty from "@/assets/cart_empty.png";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from 'react';
+import CartItemCard from './components/CartItemCard';
+import LoaderComponent from '@/components/ui/LoaderComponent';
+import { toast } from 'react-toastify';
+import { axiosClient } from '@/utils/axiosClient';
+import { useAuthContext } from '@/context/AuthContext';
+import CartEmpty from '@/assets/cart_empty.png';
+import { Link } from 'react-router-dom';
 const CartPage = () => {
   const [loading, setLoading] = useState(true);
   const { user } = useAuthContext();
@@ -15,11 +15,11 @@ const CartPage = () => {
 
   const fetchAllProducts = async () => {
     try {
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem('token');
       if (!token) return;
-      const response = await axiosClient.get("/cart/get", {
+      const response = await axiosClient.get('/cart/get', {
         headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
+          Authorization: 'Bearer ' + localStorage.getItem('token'),
         },
       });
       const data = await response.data;
@@ -51,7 +51,7 @@ const CartPage = () => {
         <h4 className="text-center font-semibold text-4xl">No Item In Cart</h4>
         <div className="flex items-center justify-center pt-4">
           <Link
-            to={"/"}
+            to={'/'}
             className="px-3 mx-auto bg-black text-white rounded  py-1 inline-block text-lg"
           >
             Explore
@@ -123,7 +123,7 @@ const CartPage = () => {
                   </p>
                 </div>
                 <Link
-                  to={"/checkout"}
+                  to={'/checkout'}
                   className="rounded-lg block bg-black py-2.5 px-4 text-white text-sm font-semibold text-center mb-8 transition-all duration-500 hover:bg-black/80 w-full"
                 >
                   Checkout

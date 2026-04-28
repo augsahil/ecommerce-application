@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 const LoaderComponent = () => {
   return (
@@ -8,12 +8,12 @@ const LoaderComponent = () => {
           <div className="relative w-32 h-32">
             <div
               className="absolute w-full h-full rounded-full border-[3px] border-gray-100/10 border-r-[#be185d] border-b-[#be185d] animate-spin"
-              style={{ animationDuration: "3s" }}
+              style={{ animationDuration: '3s' }}
             ></div>
 
             <div
               className="absolute w-full h-full rounded-full border-[3px] border-gray-100/10 border-t-[#be185d] animate-spin"
-              style={{ animationDuration: "2s", animationDirection: "reverse" }}
+              style={{ animationDuration: '2s', animationDirection: 'reverse' }}
             ></div>
           </div>
 

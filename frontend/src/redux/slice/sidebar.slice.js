@@ -1,10 +1,10 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 export const SidebarSlice = createSlice({
   initialState: {
     isToggle: false,
     isCollapse: false,
   },
-  name: "SidebarSlice",
+  name: 'SidebarSlice',
   reducers: {
     setToggle(state) {
       state.isCollapse = false;

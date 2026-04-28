@@ -1,46 +1,46 @@
-import { ROLE_TYPE } from "@/constant/auth.constant";
-import { useAuthContext } from "@/context/AuthContext";
-import clsx from "clsx";
-import React from "react";
-import { CiShoppingCart, CiHeart, CiBoxes } from "react-icons/ci";
-import { MdOutlineShoppingBag } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { ROLE_TYPE } from '@/constant/auth.constant';
+import { useAuthContext } from '@/context/AuthContext';
+import clsx from 'clsx';
+import React from 'react';
+import { CiShoppingCart, CiHeart, CiBoxes } from 'react-icons/ci';
+import { MdOutlineShoppingBag } from 'react-icons/md';
+import { Link } from 'react-router-dom';
 
 const Dashboard = () => {
   const { user } = useAuthContext();
 
   const data = [
     {
-      title: "Cart",
+      title: 'Cart',
       Icon: CiShoppingCart,
       value: user?.cart_length || 0,
       for: ROLE_TYPE.BUYER,
-      classname: "bg-purple-500",
-      link: "/cart",
+      classname: 'bg-purple-500',
+      link: '/cart',
     },
     {
-      title: "Wishlist",
+      title: 'Wishlist',
       Icon: CiHeart,
       value: user?.wishlist_length || 0,
       for: ROLE_TYPE.BUYER,
-      classname: "bg-red-500",
-      link: "/wishlist",
+      classname: 'bg-red-500',
+      link: '/wishlist',
     },
     {
-      title: "Orders",
+      title: 'Orders',
       Icon: MdOutlineShoppingBag,
       value: user?.orders_length || 0,
       for: ROLE_TYPE.BUYER,
-      classname: "bg-zinc-500",
-      link: "/orders",
+      classname: 'bg-zinc-500',
+      link: '/orders',
     },
     {
-      title: "Products",
+      title: 'Products',
       Icon: CiBoxes,
       value: user?.products_length || 0,
       for: ROLE_TYPE.SELLER,
-      classname: "bg-blue-500",
-      link: "/products",
+      classname: 'bg-blue-500',
+      link: '/products',
     },
   ];
 
@@ -60,11 +60,11 @@ const Dashboard = () => {
               >
                 <span
                   className={clsx(
-                    "text-5xl text-white p-2 rounded-full",
+                    'text-5xl text-white p-2 rounded-full',
                     cur.classname,
                   )}
                 >
-                  {" "}
+                  {' '}
                   <cur.Icon />
                 </span>
 

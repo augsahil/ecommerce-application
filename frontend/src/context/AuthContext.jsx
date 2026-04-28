@@ -1,10 +1,10 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { removeUser, setUser, UserSlicePath } from "@/redux/slice/user.slice";
-import { toast } from "react-toastify";
-import { axiosClient } from "@/utils/axiosClient";
-import LoaderComponent from "@/components/ui/LoaderComponent";
-import { useNavigate } from "react-router-dom";
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { removeUser, setUser, UserSlicePath } from '@/redux/slice/user.slice';
+import { toast } from 'react-toastify';
+import { axiosClient } from '@/utils/axiosClient';
+import LoaderComponent from '@/components/ui/LoaderComponent';
+import { useNavigate } from 'react-router-dom';
 
 const AuthContext = createContext({
   user: null,
@@ -27,11 +27,11 @@ export const AuthContextProvider = ({ children }) => {
    */
   const fetchUserProfile = async () => {
     try {
-      const token = localStorage.getItem("token") || "";
+      const token = localStorage.getItem('token') || '';
       if (!token) return;
-      const response = await axiosClient.get("/auth/profile", {
+      const response = await axiosClient.get('/auth/profile', {
         headers: {
-          Authorization: "Bearer " + token,
+          Authorization: 'Bearer ' + token,
         },
       });
       const data = await response.data;
@@ -52,10 +52,10 @@ export const AuthContextProvider = ({ children }) => {
    * # For Logout User
    */
   const logoutUser = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem('token');
     dispatch(removeUser());
-    toast.success("Logout Success");
-    navigate("/");
+    toast.success('Logout Success');
+    navigate('/');
   };
 
   if (loading) {

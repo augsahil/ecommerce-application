@@ -1,4 +1,4 @@
-import { FaShoppingCart, FaUserTie, FaStore, FaLeaf } from "react-icons/fa";
+import { FaShoppingCart, FaUserTie, FaStore, FaLeaf } from 'react-icons/fa';
 
 export default function AboutPage() {
   return (
@@ -6,7 +6,10 @@ export default function AboutPage() {
       <section className="max-w-6xl mx-auto py-16 px-6">
         {/* Heading */}
         <h1 className="text-4xl font-bold text-center mb-4">Ecom Farm</h1>
-        <p className="text-center text-lg text-gray-600 mb-10">Designed & Developed by <span className="font-semibold text-orange-600">CodeWithKrishna</span></p>
+        <p className="text-center text-lg text-gray-600 mb-10">
+          Designed & Developed by{' '}
+          <span className="font-semibold text-orange-600">CodeWithKrishna</span>
+        </p>
 
         {/* Farm Stack */}
         <div className="bg-orange-50 border border-orange-200 rounded-xl p-6 mb-12 shadow-sm">
@@ -14,8 +17,9 @@ export default function AboutPage() {
             <FaLeaf /> Farm Stack
           </h2>
           <p className="text-gray-700 leading-relaxed">
-            Ecom Farm is built using Farm Stack, providing modern architecture, scalable backend,
-            secure authentication, and seamless communication between modules.
+            Ecom Farm is built using Farm Stack, providing modern architecture,
+            scalable backend, secure authentication, and seamless communication
+            between modules.
           </p>
         </div>
 
@@ -28,8 +32,9 @@ export default function AboutPage() {
               <h3 className="text-xl font-semibold">Buyer Role</h3>
             </div>
             <p className="text-gray-700">
-              Buyers can browse products, compare prices, place orders, and submit product reviews.
-              We ensure fast checkout and secure payments.
+              Buyers can browse products, compare prices, place orders, and
+              submit product reviews. We ensure fast checkout and secure
+              payments.
             </p>
           </div>
           {/* Seller */}
@@ -39,8 +44,9 @@ export default function AboutPage() {
               <h3 className="text-xl font-semibold">Seller Role</h3>
             </div>
             <p className="text-gray-700">
-              Sellers can upload products, manage inventory, track orders, and generate reports.
-              They have complete analytics access to improve sales.
+              Sellers can upload products, manage inventory, track orders, and
+              generate reports. They have complete analytics access to improve
+              sales.
             </p>
           </div>
         </div>
@@ -51,8 +57,10 @@ export default function AboutPage() {
             <FaUserTie /> About The Developer
           </h2>
           <p className="text-gray-700 max-w-2xl mx-auto">
-            This platform is designed by <span className="font-semibold">CodeWithKrishna</span> with the
-            goal of helping buyers and sellers connect digitally through a scalable E-Commerce system.
+            This platform is designed by{' '}
+            <span className="font-semibold">CodeWithKrishna</span> with the goal
+            of helping buyers and sellers connect digitally through a scalable
+            E-Commerce system.
           </p>
         </div>
       </section>

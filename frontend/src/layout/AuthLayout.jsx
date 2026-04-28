@@ -1,8 +1,8 @@
-import LoaderComponent from "@/components/ui/LoaderComponent";
-import { UserSlicePath } from "@/redux/slice/user.slice";
-import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { Outlet, useNavigate } from "react-router-dom";
+import LoaderComponent from '@/components/ui/LoaderComponent';
+import { UserSlicePath } from '@/redux/slice/user.slice';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const AuthLayout = () => {
   const user = useSelector(UserSlicePath);
@@ -11,7 +11,7 @@ const AuthLayout = () => {
 
   useEffect(() => {
     if (user) {
-      navigate("/dashboard");
+      navigate('/dashboard');
     } else {
       setLoading(false);
     }

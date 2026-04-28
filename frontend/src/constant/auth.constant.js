@@ -1,4 +1,4 @@
 export const ROLE_TYPE = {
-    'BUYER': 'buyer',
-    'SELLER': 'seller',
-}
+  BUYER: 'buyer',
+  SELLER: 'seller',
+};
