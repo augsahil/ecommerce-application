@@ -1,38 +1,35 @@
-import React, { useEffect } from 'react';
-import { useSelector } from "react-redux";
+import LoaderComponent from "@/components/ui/LoaderComponent";
 import { UserSlicePath } from "@/redux/slice/user.slice";
-import { useNavigate, Outlet } from 'react-router-dom';
-import LoaderComponent from '@/components/ui/LoaderComponent';
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const AuthLayout = () => {
-    const user = useSelector(UserSlicePath);
-    const [loading, setLoading] = React.useState(true);
-    const navigate = useNavigate();
+  const user = useSelector(UserSlicePath);
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (user) {
-            // console.log("user is: ", user);
-            
-            navigate("/dashboard");
-        } else {
-            // console.log("user not found, staying on auth page");
-            setLoading(false);
-        }
-    }, [user]);
-
-    if (loading) {
-        return (
-            <div className="min-h-screen flex items-center justify-center">
-                <LoaderComponent />
-            </div>
-        );
+  useEffect(() => {
+    if (user) {
+      navigate("/dashboard");
+    } else {
+      setLoading(false);
     }
+  }, [user]);
 
+  if (loading) {
     return (
-        <>
-            {<Outlet />}
-        </>
+      <div className="h-screen flex justify-center items-center">
+        <LoaderComponent />
+      </div>
     );
+  }
+
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 };
 
 export default AuthLayout;

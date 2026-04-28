@@ -4,7 +4,7 @@ import { AuthContextProvider } from './AuthContext'
 const MainContext = ({ children }) => {
   return (
     <AuthContextProvider>
-      {children}
+        {children}
     </AuthContextProvider>
   )
 }

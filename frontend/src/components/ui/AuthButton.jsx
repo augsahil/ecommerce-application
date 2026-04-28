@@ -1,20 +1,25 @@
-import React from "react";
 import clsx from "clsx";
+import React from "react";
 import { CgSpinner } from "react-icons/cg";
-import { FaArrowRight } from "react-icons/fa";
+import { IoIosArrowRoundForward } from "react-icons/io";
 
-const AuthButton = ({ isLoading, text, onClick, className = "" }) => {
+const AuthButton = ({ isLoading = false, text, className }) => {
   return (
     <button
+      disabled={isLoading}
       type={isLoading ? "button" : "submit"}
       className={clsx(
-        `w-full bg-rose-700 cursor-pointer text-white py-2 rounded flex flex-wrap items-center justify-center gap-2 hover:bg-rose-800 transition duration-300 ${className}`,
+        "w-full py-2 bg-black text-white rounded outline-none cursor-pointer disabled:cursor-no-drop flex items-center justify-center gap-x-1",
+        className,
+        "disabled:bg-gray-800",
       )}
-      onClick={onClick}
-      disabled={isLoading}
     >
-      <span>{text}</span>
-      {isLoading ? <CgSpinner className="animate-spin" /> : <FaArrowRight />}
+      <span>{text}</span>{" "}
+      {isLoading ? (
+        <CgSpinner className="animate-spin text-xl" />
+      ) : (
+        <IoIosArrowRoundForward className="text-xl" />
+      )}{" "}
     </button>
   );
 };

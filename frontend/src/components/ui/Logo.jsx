@@ -1,8 +1,9 @@
 import React from "react";
+import { GiGoat } from "react-icons/gi";
 import { Link } from "react-router-dom";
 import { GiAnimalHide } from "react-icons/gi";
 
-const Logo = ({className}) => {
+const Logo = ({ className }) => {
   return (
     <>
       <Link

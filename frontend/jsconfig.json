@@ -1,10 +1,10 @@
 {
   "compilerOptions": {
     "baseUrl": ".",
+    "ignoreDeprecations": "6.0",
     "paths": {
-      "@/*": ["src/*"]
-      //   "@components/*": ["src/components/*"],
-      //   "@assets/*": ["src/assets/*"]
+      "@/*": ["./src/*"]
+      // Add paths for other aliases defined in vite.config.js
     }
   },
   "include": ["src/**/*"]
